@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>문서 목록</title>
+</head>
+<body>
+<h1>문서 목록</h1>
+<a href="/documents/new">새 문서 등록</a>
+<table border="1">
+    <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>등록일</th>
+    </tr>
+    <tr th:each="doc : ${documents}">
+        <td th:text="${doc.id}"></td>
+        <td th:text="${doc.title}"></td>
+        <td th:text="${doc.author}"></td>
+        <td th:text="${doc.createdAt}"></td>
+    </tr>
+</table>
+</body>
+</html>
