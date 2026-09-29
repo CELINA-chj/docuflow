@@ -16,7 +16,9 @@
     </tr>
     <tr th:each="doc : ${documents}">
         <td th:text="${doc.id}"></td>
-        <td th:text="${doc.title}"></td>
+        <td>
+            <a th:href="@{/documents/{id}(id=${doc.id})}" th:text="${doc.title}"></a>
+        </td>
         <td th:text="${doc.author}"></td>
         <td th:text="${doc.createdAt}"></td>
     </tr>

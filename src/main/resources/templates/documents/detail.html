@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>문서 상세</title>
+</head>
+<body>
+<h1>문서 상세</h1>
+<p>제목: <span th:text="${document.title}"></span></p>
+<p>작성자: <span th:text="${document.author}"></span></p>
+<p>내용: <span th:text="${document.content}"></span></p>
+<p>등록일: <span th:text="${document.createdAt}"></span></p>
+
+<a th:href="@{/documents/{id}/edit(id=${document.id})}">수정</a>
+
+<form th:action="@{/documents/{id}/delete(id=${document.id})}" method="post" style="display:inline;">
+    <button type="submit" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</button>
+</form>
+
+<br><br>
+<a href="/documents">목록으로</a>
+</body>
+</html>

@@ -33,4 +33,29 @@ public class DocumentController {
         documentService.save(document);
         return "redirect:/documents";
     }
+
+    // 여기부터 새로 추가
+    @GetMapping("/{id}")
+    public String detail(@PathVariable Long id, Model model) {
+        model.addAttribute("document", documentService.findById(id));
+        return "documents/detail";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String editForm(@PathVariable Long id, Model model) {
+        model.addAttribute("document", documentService.findById(id));
+        return "documents/edit";
+    }
+
+    @PostMapping("/{id}")
+    public String update(@PathVariable Long id, @ModelAttribute Document document) {
+        documentService.update(id, document);
+        return "redirect:/documents/" + id;
+    }
+
+    @PostMapping("/{id}/delete")
+    public String delete(@PathVariable Long id) {
+        documentService.delete(id);
+        return "redirect:/documents";
+    }
 }
